@@ -1,7 +1,7 @@
 /*
 
 just testing atoms github integration
-doesnt seem to be doing anything when I push
+trying out Git Credentials Manager
 
 */
 //TODO: add documentation
