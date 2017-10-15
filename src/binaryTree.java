@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 /*
 Implemented to solve the problem of finding the lowest common ancestor
 Assumed therefore that the user cares about the 'parent' of a value at the time of adding it to the tree
@@ -22,6 +25,7 @@ public class binaryTree<Key extends Comparable<Key>, Value> {
       }
     }
 
+
     public boolean isEmpty(){
       return (root == null);
     }
@@ -29,23 +33,23 @@ public class binaryTree<Key extends Comparable<Key>, Value> {
     public Value get(Key key){
     	return get(root, key);
     }
-    
+
     private Value get(Node x, Key key) {
-    	
+
     	Value result = null;
-    	
+
     	if(x == null) {
     		result = null;
     	}
-    	
+
     	else {
     		if(x.key.compareTo(key) == 0) {
     			result = x.value;
     		}
-    		
+
     		else {
     			result = get(x.left, key);
-    			
+
     			if(result == null) {
     				result = get(x.left, key);
     			}
@@ -55,7 +59,7 @@ public class binaryTree<Key extends Comparable<Key>, Value> {
     }
 
     /**
-     *  Insert key-value pair into BST.
+     *  Insert key-value pair into BT.
      *  If key already exists under same parent, update with new value.
      *
      *  @param parent the key under which to insert the new key (set to null if new key is to be set as root)
@@ -120,6 +124,7 @@ public class binaryTree<Key extends Comparable<Key>, Value> {
       return success;
     }
 
+    //find the node for the associated key, given a starting node
     private Node search(Node x, Key key){
       if(x == null){ return null; }
 
@@ -141,7 +146,40 @@ public class binaryTree<Key extends Comparable<Key>, Value> {
       return null;
     }
 
+    //return the value of the lowest common ancestor for two keys
     public Value LCA(Key key1, Key key2){
-    	return null;
+
+    	Value result = null;							//stores resulting value
+    	Node x = search(root, key1);					//Find Node associated with key1
+    	Node y = search(root, key2);					//and key2
+    	List<Node> xParents = new ArrayList<Node>();
+    	List<Node> yParents = new ArrayList<Node>();
+
+    	while(x != null) {								//Add x and its parents to list until root node is reached
+    		xParents.add(x);
+    		x = x.parent;
+    	}
+
+    	while(y != null) {								//Add y and its parents to list until root node is reached
+    		yParents.add(y);
+    		y = y.parent;
+    	}
+
+    	while(xParents.size() > yParents.size()) {		//make lists the same size
+    		xParents.remove(0);
+    	}
+
+    	while(yParents.size() > xParents.size()) {
+    		yParents.remove(0);
+    	}
+
+    	int index = 0;
+    	while(result == null && index < xParents.size()) {
+    		if(xParents.contains(yParents.get(index))) {
+    			result = yParents.get(index).value;
+    		}
+    		index++;
+    	}
+    	return result;
     }
 }

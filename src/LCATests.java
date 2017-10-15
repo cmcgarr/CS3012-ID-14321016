@@ -56,9 +56,9 @@ public class LCATests {
 		testBT.put(1,5,5);
 		testBT.put(5,3,3);
 		testBT.put(3,14,14);
-		testBT.put(12,5,5);
-		testBT.put(7,12,12);
-		testBT.put(9,7,7);
+		testBT.put(5,12,12);
+		testBT.put(12,7,7);
+		testBT.put(7,9,9);
 		assertEquals("Testing Lowest Common Ancestor", (Integer)5, testBT.LCA(3, 9));
 
 
