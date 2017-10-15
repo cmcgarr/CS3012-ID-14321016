@@ -51,17 +51,17 @@ public class LCATests {
 	public void testLCA(){
 		binaryTree<Integer, Integer> testBT = new binaryTree<Integer, Integer>();
 
-
+		assertEquals("Testing Lowest Common Ancestor in empty tree", null, testBT.LCA(3, 9));
 		testBT.put(null,1,1);
+		assertEquals("Testing Lowest Common Ancestor of (x,x)", null, testBT.LCA(1, 1));
 		testBT.put(1,5,5);
 		testBT.put(5,3,3);
 		testBT.put(3,14,14);
 		testBT.put(5,12,12);
 		testBT.put(12,7,7);
 		testBT.put(7,9,9);
-		assertEquals("Testing Lowest Common Ancestor", (Integer)5, testBT.LCA(3, 9));
-
-
+		assertEquals("Testing Lowest Common Ancestor for standard case", (Integer)5, testBT.LCA(3, 9));
+		assertEquals("Testing Lowest Common Ancestor for keys that do not exist in tree", null, testBT.LCA(4, 11));
 	}
 
 
