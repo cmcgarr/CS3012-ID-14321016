@@ -150,19 +150,21 @@ public class binaryTree<Key extends Comparable<Key>, Value> {
     public Value LCA(Key key1, Key key2){
 
     	Value result = null;							//stores resulting value
-    	Node x = search(root, key1);					//Find Node associated with key1
+    	Node x = search(root, key1);					//Find first parent Node of key1
     	Node y = search(root, key2);					//and key2
     	List<Node> xParents = new ArrayList<Node>();
     	List<Node> yParents = new ArrayList<Node>();
 
     	while(x != null) {								//Add x and its parents to list until root node is reached
-    		xParents.add(x);
     		x = x.parent;
+    		if(x != null) { xParents.add(x); }
+    		
     	}
 
     	while(y != null) {								//Add y and its parents to list until root node is reached
-    		yParents.add(y);
     		y = y.parent;
+    		if(y != null) { yParents.add(y); }
+    		
     	}
 
     	while(xParents.size() > yParents.size()) {		//make lists the same size
