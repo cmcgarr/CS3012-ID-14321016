@@ -63,6 +63,4 @@ public class LCATests {
 		assertEquals("Testing Lowest Common Ancestor for standard case", (Integer)5, testBT.LCA(3, 9));
 		assertEquals("Testing Lowest Common Ancestor for keys that do not exist in tree", null, testBT.LCA(4, 11));
 	}
-
-
 }

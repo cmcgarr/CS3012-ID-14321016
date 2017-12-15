@@ -7,7 +7,6 @@ Assumed therefore that the user cares about the 'parent' of a value at the time 
 Thus this is not a Binary Search Tree, and new nodes are inserted based on who their parent should be
 In the event that two equal Keys are inserted under equal parents, the first key found is returned
 */
-//TODO:
 
 public class binaryTree<Key extends Comparable<Key>, Value> {
 
@@ -66,18 +65,13 @@ public class binaryTree<Key extends Comparable<Key>, Value> {
      *  @param key the key to insert
      *  @param val the value associated with key
      *
-     *  TODO: tidy up and make functions
+     * 
      */
 
     public boolean put(Key parent, Key key, Value value){
 
       boolean success = false;
-      //if{
-        // if (value == null){
-          //success = delete(key);                TODO implement delete function
-        // }
 
-      //set as root ----TODO change to else if once delete is implemented----
       if(parent == null){
         //if root is empty, create new root
         if (root == null){ root = new Node(null, key, value); }
